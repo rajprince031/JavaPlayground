@@ -5,13 +5,7 @@ Welcome to JavaPrograms, your comprehensive repository of Java programs for lear
 Contents:
 
 Fundamental Programs: 
-Explore basic Java programs that introduce fundamental programming concepts such as variables, loops, conditionals, and functions/methods.
-
-Algorithm Implementations: 
-Dive into Java implementations of popular algorithms, including sorting algorithms (e.g., bubble sort, quicksort), searching algorithms (e.g., linear search, binary search), and more.
-
-Data Structure Implementations: 
-Discover Java implementations of fundamental data structures such as arrays, linked lists, stacks, queues, trees, and graphs.
+Explore basic Java programs that introduce fundamental programming concepts such as variables, loops, conditionals, classes and functions/methods.
 
 Problem-Solving Exercises: 
 Challenge yourself with problem-solving exercises and programming puzzles designed to enhance your Java programming skills and problem-solving abilities.
