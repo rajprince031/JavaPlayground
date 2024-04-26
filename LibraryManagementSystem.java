@@ -1,11 +1,8 @@
-// ypu have to implements library using java class Library
-//Methods :- addBook, issueBook, returnBook, showAvailable Books
-//Properties :- Array to store tha available books
-//Array to store the issued books
-//
+// This program simulates a library management system where users can add books, issue books, return books, and view available books.
+
 import java.util.*;
 
-public class Exercise4 {
+public class LibraryManagementSystem {
     public static void main(String[] agrs)
     {
         Scanner sc = new Scanner(System.in);
@@ -14,6 +11,9 @@ public class Exercise4 {
         ans = ans.toLowerCase();
         System.out.println();
         Library li = new Library();
+
+        // Loop to continuously operate the library system until the user chooses to sign out
+
         while(ans.equals("yes"))
         {
             System.out.println("\nLibrary options");
@@ -21,9 +21,11 @@ public class Exercise4 {
             System.out.println("2. Issue Book");
             System.out.println("3. Return Book");
             System.out.println("4. Show all available Book");
-            System.out.println("5. Sign Out");
+            System.out.println("5. Sign Out\n");
 
             int res = sc.nextInt();
+            System.out.println();
+            // Execute user's choice
             if(res==1) li.addBook();
             else if(res==2) li.issueBook();
             else if(res==3) li.returnBook();
@@ -38,16 +40,22 @@ public class Exercise4 {
     }
 }
 
+// Class to represent the library
 class Library{
+
+    // HashMaps to store book details and their quantities
     HashMap<Integer,String> book = new HashMap<>();
     HashMap<Integer,Integer> quanBook = new HashMap<>();
     Scanner sc = new Scanner(System.in);
+
+    // Method to add a book to the library
     void addBook()
     { 
         System.out.print("Enter Book Id : ");
         int bookID = sc.nextInt();
         if(book.containsKey(bookID))
         {
+            // If the book already exists in the library, update its quantity
             System.out.println("This book is already available in Library");
             System.out.println("Book ID : "+ bookID);
             System.out.println("Book Name : "+ book.get(bookID));
@@ -56,6 +64,7 @@ class Library{
             quanBook.put(bookID,quanBook.get(bookID)+qbook);   
         }
         else{
+            // If it's a new book, add it to the library
             System.out.print("Enter Book Name : ");
             String bookName = sc.next();
             System.out.print("Enter the qunatity of "+bookName+" : ");
@@ -65,13 +74,16 @@ class Library{
         }
 
     }
+
+    // Method to issue a book from the library
+
     void issueBook()
     {
         System.out.print("Enter the Book ID :- ");
         int bookID = sc.nextInt();
         if(book.containsKey(bookID))
         {
-            
+            // If the book exists, check if it's available and allow issuing if so
             System.out.print("\nEnter the Book ID :- " + bookID);
             System.out.println("\nBook Name :- " +book.get(bookID));
             System.out.println("Available quantity :- " +quanBook.get(bookID)+"\n");
@@ -89,24 +101,33 @@ class Library{
             System.out.println("This Book is not available !!");
         }
     }
+
+    // Method to return a book to the library
     void returnBook()
     {
         System.out.print("Enter the Book ID :- ");
         int bookID = sc.nextInt();
         if(book.containsKey(bookID))
         {
+            // If the book exists, increase its quantity when returned
             quanBook.put(bookID,quanBook.get(bookID)+1);
+
+            System.out.println("\nBook Id :- "+bookID);
+            System.out.println("Book Name :- "+book.get(bookID));
+            System.out.println("Updated book's quantity :- "+(quanBook.get(bookID))+"\n");
             System.out.println("\nBook returned successfully\n");
         }
         else{
             System.out.println("Worng ID");
         }
     }
+
+    // Method to display all available books in the library
     void showAvailableBook()
     {
         System.out.println("List of Available Books\n");
         System.out.println("Book ID : Book Name : No. of Books Available\n");
-
+        // Iterate through the books and their quantities and display them
         for(Map.Entry<Integer,String> aviBook : book.entrySet())
         {
             System.out.println(aviBook.getKey() +" -- "+ aviBook.getValue()+" -- "+ quanBook.get(aviBook.getKey()));
